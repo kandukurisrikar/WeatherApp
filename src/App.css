@@ -1,0 +1,335 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+  background-image: url('https://th.bing.com/th/id/R.2a6d055746d396ec588fde540f603142?rik=3FrxkCMFtH6ggQ&riu=http%3a%2f%2fhdqwalls.com%2fdownload%2fstorm-night-lightning-in-city-4k-o4-2560x1440.jpg&ehk=ABfoXRLnsDlkXGYE4vKIDOf3Hc%2fg%2fJ4EruCS9U9dtYg%3d&risl=&pid=ImgRaw&r=0'); /* Replace with your background URL */
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+/* Input Field Styling */
+input[type="text"] {
+  padding: 14px 20px;  /* Increased padding for better readability and touch targets */
+  font-size: 1.1rem;
+  border: 2px solid #ccc;  /* Light border for contrast */
+  border-radius: 25px;  /* Fully rounded edges for a modern look */
+  width: 100%;  /* Makes the input take up full width of its container */
+  max-width: 450px;  /* Optional: limits width for larger screens */
+  background-color: rgba(255, 255, 255, 0.9);  /* Slightly transparent background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+  transition: all 0.3s ease;  /* Smooth transition effect */
+  font-family: 'Roboto', sans-serif;  /* Smooth and modern font */
+  color: #333;  /* Dark text color for better contrast */
+}
+
+/* Focus Effect */
+input[type="text"]:focus {
+  border-color: #007bff;  /* Blue border on focus */
+  outline: none;  /* Remove default outline */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);  /* Subtle blue glow on focus */
+}
+
+/* Button Styling */
+button {
+  padding: 12px 25px;  /* Ample padding for better touch/click targets */
+  font-size: 1.1rem;
+  background: linear-gradient(145deg, #6e7a33, #4CAF50);  /* Gradient for a more dynamic look */
+  color: white;
+  border: none;
+  border-radius: 30px;  /* Fully rounded edges */
+  cursor: pointer;
+  transition: all 0.3s ease;  /* Smooth transition for hover and active states */
+  width: 100%;
+  max-width: 150px;  /* Optional: Limit button size for better layout */
+  font-family: 'Arial', sans-serif;  /* Modern font */
+  text-transform: uppercase;  /* Capitalized letters for clarity */
+  font-weight: 600;  /* Bold text for emphasis */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);  /* Soft shadow for depth */
+}
+
+/* Hover Effect */
+button:hover {
+  background: linear-gradient(145deg, #4CAF50, #6e7a33);  /* Reversed gradient for hover effect */
+  transform: translateY(-4px);  /* Slight lift effect on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);  /* Darker shadow on hover */
+}
+
+/* Active State (when clicked) */
+button:active {
+  background: #388e3c;  /* Darker green on active */
+  transform: translateY(2px);  /* Subtle depression effect when clicked */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);  /* Reduced shadow on click */
+}
+
+/* Focus Effect (for accessibility) */
+button:focus {
+  outline: none;  /* Remove default outline */
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.8);  /* Green glow on focus for better accessibility */
+}
+
+/* Disabled State */
+button:disabled {
+  background: #e0e0e0;  /* Light gray background when disabled */
+  color: #9e9e9e;  /* Light gray text */
+  cursor: not-allowed;  /* Disable cursor when inactive */
+  box-shadow: none;  /* No shadow for disabled state */
+}
+
+/* Accessibility Enhancements */
+input[type="text"], button {
+  font-family: 'Roboto', sans-serif;  /* Ensures a consistent and modern font */
+}
+
+input[type="text"]:disabled, button:disabled {
+  background-color: #e0e0e0;  /* Light gray background for disabled state */
+  cursor: not-allowed;  /* Prevent interaction when disabled */
+}
+
+.current-weather {
+  text-align: center;
+  margin-bottom: 30px;
+
+}
+
+.current-info h2 {
+  font-size: 2rem;
+  color: white;
+}
+
+.temperature {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.weather-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.air-quality {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.hourly-forecast,
+.five-day-forecast {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.hourly-forecast h3,
+.five-day-forecast h3 {
+  color: white;
+}
+.forecast-cards {
+  display: flex;
+  gap: 20px; /* Increase gap between cards for less congestion */
+  flex-wrap: wrap; /* Allow cards to wrap to a new line if they don’t fit */
+  justify-content: space-around; /* Distribute space equally around cards */
+}
+
+.weather-card,
+.forecast-card {
+  background: black;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 180px; /* Increase width slightly for a roomier feel */
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.forecast-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: steelblue;
+}
+
+.forecast-card .date,
+.forecast-card .day,
+.forecast-card .temp-range {
+  margin: 10px 0; /* Increase margin for better spacing between elements */
+}
+
+.forecast-card img {
+  width: 50px;
+  height: 50px;
+}
+
+.temp-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.cold {
+  color: skyblue;
+}
+
+.warm {
+  color: orange;
+}
+
+.hot {
+  color: red;
+}
+
+.weather-card {
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.temp {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.description {
+  font-size: 1rem;
+  color: white;
+}
+/* Add this to your App.css file */
+
+.hey-jaime {
+  position: fixed; /* Ensures it stays at the top right even when scrolling */
+  top: 10px;
+  right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  transition: opacity 0.3s ease;
+  z-index: 1000; /* To make sure it stays on top of other elements */
+}
+
+
+.error-message {
+  position: fixed; /* Ensures it stays at the top even when scrolling */
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%); /* Centers the message horizontally */
+  background-color: #f44336; /* Red background for error */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+  opacity: 1; /* Makes the message visible */
+}
+
+
+
+
+
+
+
+/* Container for both cards */
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Health Tips Card Styles */
+.health-tips-card {
+  background: #4CAF50;  /* Updated to a green color for contrast */
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);  /* Subtle shadow for card effect */
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth hover effect */
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+/* Custom Alert Card Styles */
+.custom-alert-card {
+  background: #ff9a00;  /* Solid background to maintain color */
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth hover effect */
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  width: 200px;
+  height: 200px;
+
+}
+
+/* Card Hover Effect */
+.card:hover, .health-tips-card:hover, .custom-alert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);  /* Stronger shadow on hover */
+}
+
+/* Card Button Styling */
+.card-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Card Button Hover Effect */
+.card-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Layout for Mobile */
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+  }
+}
